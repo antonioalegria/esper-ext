@@ -1,0 +1,52 @@
+
+<project name="FrogfishUtil" default="dist" basedir=".">
+  <description>
+    Utility Java classes for use in Frogfish.
+  </description>
+
+  <!-- set global properties for this build -->
+  <property name="src"   location="src"/>
+  <property name="build" location="build"/>
+  <property name="dist"  location="dist"/>
+
+  <!-- Name of project and version, used to create filenames -->
+  <property name="Name"         value="FrogfishUtil"/>
+  <property name="name"         value="FrogfishUtil"/>
+  <property name="version-base" value="0.0.2"/>
+  <property name="patchlevel"   value="1"/>
+  <property name="version"      value="${version-base}-${patchlevel}"/>
+  <property name="fullname"     value="${name}-${version}"/>
+
+  <property name="dist"     value="dist"/>
+  <property name="lib"      value="lib"/>
+  <property name="src"      value="src/main/java"/>
+  <property name="manifest" value="manifest.mf"/>
+
+  <target name="init">
+    <tstamp/>
+  </target>
+
+  <path id="classpath">
+    <fileset dir="${lib}">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <target name="clean" description="clean up">
+    <delete dir="${dist}" quiet="true" />
+    <delete dir="${build}" quiet="true" />
+  </target>
+
+  <target name="compile" depends="init"
+    description="compile the source " >
+    <mkdir dir="${build}"/>
+    <javac srcdir="${src}" destdir="${build}" classpathref="classpath"/>
+  </target>
+
+  <target name="dist" depends="compile"
+    description="generate the distribution" >
+    <mkdir dir="${dist}/lib"/>
+    <jar jarfile="${dist}/lib/${fullname}.jar" basedir="${build}" manifest="${manifest}"/>
+  </target>
+</project>
+
