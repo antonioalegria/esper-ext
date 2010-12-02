@@ -137,14 +137,7 @@ public class TrixView extends ViewSupport implements CloneableView {
     private void postData() {    	
 		HashMap<String,Object> trixValue = createEvent(mTrix, mSignal, mEMA1, mEMA2, mEMA3, mValue, mDataWinSize, mSignalWinSize, mDatapoints);
 		EventBean outgoing = mStatementContext.getEventAdapterService().adaptorForTypedMap(trixValue, mEventType);
-        if (mLastEvent == null) {
-        	HashMap<String,Object> prevTrixValue = createEvent(0, 0, 0, 0, 0, 0, mDataWinSize, mSignalWinSize, 0);
-    		EventBean prevOutgoing = mStatementContext.getEventAdapterService().adaptorForTypedMap(prevTrixValue, mEventType);
-            this.updateChildren(new EventBean[] {outgoing}, null);//new EventBean[] {prevOutgoing});
-        } else {
-            this.updateChildren(new EventBean[] {outgoing}, null);//new EventBean[] {mLastEvent});            
-        }
-        
+        this.updateChildren(new EventBean[] {outgoing}, null);            
         mLastEvent = outgoing;
     }
     
