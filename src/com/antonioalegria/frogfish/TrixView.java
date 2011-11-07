@@ -10,7 +10,7 @@ import org.apache.commons.logging.LogFactory;
 import com.espertech.esper.client.EventBean;
 import com.espertech.esper.client.EventType;
 import com.espertech.esper.collection.SingleEventIterator;
-import com.espertech.esper.core.StatementContext;
+import com.espertech.esper.core.context.util.AgentInstanceViewFactoryChainContext;
 import com.espertech.esper.epl.expression.ExprEvaluator;
 import com.espertech.esper.epl.expression.ExprNode;
 import com.espertech.esper.event.EventAdapterService;
@@ -38,7 +38,7 @@ public class TrixView extends ViewSupport implements CloneableView {
     
     private long mDatapoints = 0L;
     
-	private StatementContext mStatementContext;
+	private AgentInstanceViewFactoryChainContext mStatementContext;
 	private int mDataWinSize;
 	private int mSignalWinSize;
 	private ExprNode mValueExpr;
@@ -48,13 +48,13 @@ public class TrixView extends ViewSupport implements CloneableView {
 
 	private EventType mEventType;
 	
-    public TrixView(StatementContext statementContext, int dataWinSize, int signalWinSize, ExprNode valueExpr) {
+    public TrixView(AgentInstanceViewFactoryChainContext statementContext, int dataWinSize, int signalWinSize, ExprNode valueExpr) {
         this.mStatementContext = statementContext;
         this.mDataWinSize = dataWinSize;
         this.mSignalWinSize = signalWinSize;
         this.mValueExpr = valueExpr;
         this.mValueExprEval = valueExpr.getExprEvaluator();
-        this.mEventType = createEventType(mStatementContext.getEventAdapterService());
+        this.mEventType = createEventType(mStatementContext.getStatementContext().getEventAdapterService());
     }
 
     @Override
@@ -115,8 +115,8 @@ public class TrixView extends ViewSupport implements CloneableView {
     }
 
     @Override
-    public View cloneView(StatementContext statementContext) {
-        return new TrixView(statementContext, mDataWinSize, mSignalWinSize, mValueExpr);
+    public View cloneView() {
+        return new TrixView(mStatementContext, mDataWinSize, mSignalWinSize, mValueExpr);
     }
     
     protected static EventType createEventType(EventAdapterService eventAdapterService) {
@@ -131,12 +131,12 @@ public class TrixView extends ViewSupport implements CloneableView {
         schemaMap.put("speriod", Integer.TYPE);
         schemaMap.put("datapoints", Long.TYPE);
         
-        return eventAdapterService.createAnonymousMapType(schemaMap);
+        return eventAdapterService.createAnonymousMapType("TrixValue", schemaMap); // TODO: before this was really anonymous
     }
     
     private void postData() {    	
 		HashMap<String,Object> trixValue = createEvent(mTrix, mSignal, mEMA1, mEMA2, mEMA3, mValue, mDataWinSize, mSignalWinSize, mDatapoints);
-		EventBean outgoing = mStatementContext.getEventAdapterService().adaptorForTypedMap(trixValue, mEventType);
+		EventBean outgoing = mStatementContext.getStatementContext().getEventAdapterService().adapterForTypedMap(trixValue, mEventType);
         this.updateChildren(new EventBean[] {outgoing}, null);            
         mLastEvent = outgoing;
     }

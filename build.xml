@@ -12,7 +12,7 @@
   <!-- Name of project and version, used to create filenames -->
   <property name="Name"         value="FrogfishUtil"/>
   <property name="name"         value="FrogfishUtil"/>
-  <property name="version-base" value="0.0.2"/>
+  <property name="version-base" value="0.0.3"/>
   <property name="patchlevel"   value="1"/>
   <property name="version"      value="${version-base}-${patchlevel}"/>
   <property name="fullname"     value="${name}-${version}"/>
