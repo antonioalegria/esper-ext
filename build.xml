@@ -1,7 +1,7 @@
 
-<project name="FrogfishUtil" default="dist" basedir=".">
+<project name="esper-ext" default="dist" basedir=".">
   <description>
-    Utility Java classes for use in Frogfish.
+    Utility and extension code for the Esper Complex Event Processing engine.
   </description>
 
   <!-- set global properties for this build -->
@@ -10,11 +10,8 @@
   <property name="dist"  location="dist"/>
 
   <!-- Name of project and version, used to create filenames -->
-  <property name="Name"         value="FrogfishUtil"/>
-  <property name="name"         value="FrogfishUtil"/>
-  <property name="version-base" value="0.0.3"/>
-  <property name="patchlevel"   value="1"/>
-  <property name="version"      value="${version-base}-${patchlevel}"/>
+  <property name="name"         value="esper-ext"/>
+  <property name="version"      value="0.1.0"/>
   <property name="fullname"     value="${name}-${version}"/>
 
   <property name="dist"     value="dist"/>

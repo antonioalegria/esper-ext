@@ -1,4 +1,4 @@
-package com.antonioalegria.frogfish;
+package com.antonioalegria.esper-ext;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
