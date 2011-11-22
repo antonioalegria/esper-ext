@@ -37,4 +37,4 @@ This project still hasn't been Mavenified but I plan to do it as soon as I have 
 
 ## License
 
-esper-ext is open source software released under the **Apache 2.0 license**. I will be happy to integrate patches from anyone willing to contribute.
+esper-ext is open source software released under the **MIT License** (see LICENSE file). I will be happy to integrate patches from anyone willing to contribute.
