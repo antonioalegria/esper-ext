@@ -21,7 +21,8 @@ You can build your own JAR or download a prebuilt one. You include the JAR in yo
 ### Building JAR:
 
 Build scripts are just plain-old Ant. To generate a JAR just do:
-    ant build
+
+    ant dist
 
 ### Maven:
 
