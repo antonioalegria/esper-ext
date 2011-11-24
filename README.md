@@ -4,9 +4,10 @@
 
 The Esper extension library is a set of utility plugins you can use in your Esper implementation.
 
-At version 0.1.0 it is stable although it still does not have many extensions. Currently it mostly has a plugin view that calculates the [TRIX index](http://en.wikipedia.org/wiki/Trix_%28technical_analysis%29) over a value in an event stream. This index allows you, in fact, to calculate the tendency of that value - is it trending up, down, stable?
+At version 0.1.0 it is stable although it still does not have many extensions. Currently it mostly has a plugin view that calculates the [TRIX index](http://en.wikipedia.org/wiki/Trix_%28technical_analysis%29) over a value in an event stream. This index allows you, in fact, to **calculate the tendency of that value** - is it trending up, down, stable?
 
 There are plans to include further extensions for things like:
+
 * Named window persistance and recovery after restarting
 * Catalog of technical analysis plugin windows and aggregation functions (great for Algorithmic Trading but also for general time series trend analysis)
 * EPL rule annotations
