@@ -28,7 +28,7 @@ Build scripts are just plain-old Ant. To generate a JAR just do:
 This project still hasn't been Mavenified but I plan to do it as soon as I have some time. For the time being, if you are using Maven just include the following in your `pom.xml`:
 
     <dependency>
-        <groupId>com.antonioalegria</groupId>
+        <groupId>frogfish</groupId>
         <artifactId>esper-ext</artifactId>
         <version>0.1.0</version>
         <scope>system</scope>

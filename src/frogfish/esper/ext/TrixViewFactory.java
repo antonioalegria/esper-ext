@@ -1,4 +1,4 @@
-package com.antonioalegria.esper-ext;
+package frogfish.esper.ext;
 
 import com.espertech.esper.client.EventType;
 import com.espertech.esper.core.context.util.AgentInstanceViewFactoryChainContext;

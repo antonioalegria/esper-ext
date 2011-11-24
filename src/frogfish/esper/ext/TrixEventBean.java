@@ -1,4 +1,4 @@
-package com.antonioalegria.esper-ext;
+package frogfish.esper.ext;
 
 public class TrixEventBean {
     private double trix;

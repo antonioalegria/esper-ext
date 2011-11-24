@@ -1,4 +1,4 @@
-package com.antonioalegria.esper-ext;
+package frogfish.esper.ext;
 
 import java.util.HashMap;
 import java.util.Iterator;
